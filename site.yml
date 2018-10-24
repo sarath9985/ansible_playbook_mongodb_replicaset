@@ -1,0 +1,14 @@
+- hosts: mongodb
+  remote_user: ec2-user
+  become: yes
+  roles:
+    - common
+
+# Primary replica member is expected to be first one in the group
+- hosts: mongodb-master
+  remote_user: ec2-user
+  become: yes
+  roles:
+    - replica-set
+    - mongo-users 
+    - security
