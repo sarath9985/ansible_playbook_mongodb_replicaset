@@ -1,7 +1,17 @@
-- name: Create file to initiate replica set
+- name: Create file to add for Primary replica setup
+  template:
+    src: init.j2
+    dest: ./init.j2
+
+- name: Initialize the replica set for Primary
+  command: mongo ./init.j2
+
+
+- name: Create file to add replica members for Secondary
   template: 
     src: replSetInit.j2
-    dest: ./replSetInit.js
+    dest: ./replSetInit.j2
 
-- name: Initialize the replica set
-  command: mongo ./replSetInit.js
+- name: Initialize the Secondary replica set
+  command: mongo ./replSetInit.j2
+

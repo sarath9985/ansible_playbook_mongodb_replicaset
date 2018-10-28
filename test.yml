@@ -1,9 +1,0 @@
-- hosts: local
-  tasks:
-    - name: Update mongod.conf
-      template: 
-        src: replSetInit.j2
-        dest: ./replSetInit.js
-      tags:
-        - configure
-      
